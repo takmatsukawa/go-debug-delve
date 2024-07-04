@@ -3,7 +3,7 @@ services:
     build: .
     container_name: my-go-app
     ports:
-      - "8080:8080"
+      - "2345:2345"
 #    volumes:
 #      - .:/app
 #    command: ./my-go-app

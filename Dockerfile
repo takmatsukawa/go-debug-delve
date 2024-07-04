@@ -12,7 +12,9 @@ RUN go mod download
 COPY . ./
 
 # ビルドコマンドを実行して実行ファイルを生成
-RUN go build -o my-go-app
+RUN go build -gcflags "all=-N -l" -o my-go-app
+
+RUN go install github.com/go-delve/delve/cmd/dlv@latest
 
 # コンテナ実行時に実行されるコマンドを指定
-CMD ["./my-go-app"]
+CMD ["dlv", "--listen=:2345", "--headless=true", "--api-version=2", "--accept-multiclient", "exec", "./my-go-app"]
