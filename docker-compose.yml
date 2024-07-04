@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    container_name: my-go-app
+    ports:
+      - "8080:8080"
+#    volumes:
+#      - .:/app
+#    command: ./my-go-app
